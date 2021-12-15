@@ -20,7 +20,7 @@
 // | Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, |
 // | USA.                                                                  |
 // +-----------------------------------------------------------------------+
-$lang['%s says on %s :'] = '%s je za %s napisal/a :';
+$lang['%s says on %s :'] = '%s je na %s napisal/a :';
 $lang['* : mandatory fields'] = '* : obvezna polja';
 $lang['Activate rating'] = 'Vključi ocenjevanje';
 $lang['GuestBook'] = 'Knjiga gostov';
