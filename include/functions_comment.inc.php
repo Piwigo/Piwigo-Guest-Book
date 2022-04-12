@@ -94,7 +94,7 @@ SELECT COUNT(*) AS user_exists
     {
       $comm['website'] = 'http://'.$comm['website'];
     }
-    if (!url_check_format($comm['website']))
+    if (!@url_check_format($comm['website']))
     {
       $page['errors'][] = l10n('invalid website address');
       $comment_action='reject';
