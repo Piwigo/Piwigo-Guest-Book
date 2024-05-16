@@ -38,7 +38,7 @@
     <div class="commentHeader">
       {'%s says on %s :'|translate:$author:$date}<br>
       {if $comment.STARS}{$comment.STARS}{/if}
-      {if $comment.EMAIL} <a href="mailto:{$comment.EMAIL}">{$comment.EMAIL}</a>{/if}
+      {if isset($comment.EMAIL)} <a href="mailto:{$comment.EMAIL}">{$comment.EMAIL}</a>{/if}
     </div>
     {if isset($comment.IN_EDIT)}
     <a name="edit_comment"></a>
