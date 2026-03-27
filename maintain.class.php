@@ -63,8 +63,25 @@ CREATE TABLE IF NOT EXISTS `' . $this->table . '` (
   `validated` enum("true","false") NOT NULL DEFAULT "false",
   `validation_date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci
 ;');
+    
+    // ------------------------------------------
+    // Automatic charset/collation upgrade
+    // ------------------------------------------
+    $result = pwg_query("SHOW TABLE STATUS LIKE '" . $this->table . "';");
+    if ($result && $row = pwg_db_fetch_assoc($result))
+    {
+      if (strpos($row['Collation'], 'utf8mb4') !== 0)
+      {
+        pwg_query("
+          ALTER TABLE `" . $this->table . "`
+          CONVERT TO CHARACTER SET utf8mb4
+          COLLATE utf8mb4_general_ci
+        ;
+        ");
+      }
+    }
   }
   
   function update($old_version, $new_version, &$errors=array())
